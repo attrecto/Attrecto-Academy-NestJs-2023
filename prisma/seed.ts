@@ -4,6 +4,19 @@ const prisma = new PrismaClient();
 
 const main = async () => {
   /**
+  * Init test user
+  */
+
+  await prisma.user.create({
+    data: {
+      email: 'john.doe@gmail.com',
+      firstName: 'John',
+      lastName: 'Doe',
+      password: 'password'
+    },
+  });
+
+  /**
    * Init some test course
    */
 
@@ -11,7 +24,7 @@ const main = async () => {
     data: {
       title: 'First course',
       description: 'This is my first course',
-      author: 'John Doe',
+      author: { connect: { email: 'john.doe@gmail.com' } }
     },
   });
 };
