@@ -4,7 +4,7 @@ import { PrismaService } from 'src/shared/prisma/prisma.service';
 
 @Injectable()
 export class CourseService {
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   findAll() {
     return this.prisma.course.findMany();
@@ -15,14 +15,14 @@ export class CourseService {
   }
 
   create(data: Prisma.CourseCreateInput) {
-    return this.prisma.course.create({ data })
+    return this.prisma.course.create({ data });
   }
 
   modify(data: Prisma.CourseUpdateInput, id: number) {
-    return this.prisma.course.update({ where: { id }, data })
+    return this.prisma.course.update({ where: { id }, data });
   }
 
   delete(id: number) {
-    return this.prisma.course.delete({ where: { id } })
+    return this.prisma.course.delete({ where: { id } });
   }
 }

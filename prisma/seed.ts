@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import { AuthService } from '../src/app/auth/auth.service';
 
 const prisma = new PrismaClient();
 
@@ -12,7 +13,7 @@ const main = async () => {
       email: 'john.doe@gmail.com',
       firstName: 'John',
       lastName: 'Doe',
-      password: 'password'
+      password: await AuthService.hashPassword('password'),
     },
   });
 

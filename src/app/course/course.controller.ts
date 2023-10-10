@@ -4,7 +4,7 @@ import { CourseService } from './course.service';
 
 @Controller('course')
 export class CourseController {
-  constructor(private readonly courseService: CourseService) { }
+  constructor(private readonly courseService: CourseService) {}
 
   @Get(':id')
   findOne(@Param('id') id: string): Promise<Course> {
@@ -18,7 +18,7 @@ export class CourseController {
 
   @Post()
   create(@Body() body: Prisma.CourseCreateInput) {
-    return this.courseService.create(body)
+    return this.courseService.create(body);
   }
 
   @Put(':id')
@@ -30,5 +30,4 @@ export class CourseController {
   delete(@Param('id') id: string) {
     return this.courseService.delete(+id);
   }
-
 }
