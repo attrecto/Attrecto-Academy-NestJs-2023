@@ -11,7 +11,7 @@ export class UserService {
   }
 
   findOne(id: number) {
-    return this.prisma.user.findUnique({ where: { id } });
+    return this.prisma.user.findUnique({ where: { id }, include: { profile: true } });
   }
 
   update(data: Prisma.UserUpdateInput, id: number) {
@@ -20,5 +20,9 @@ export class UserService {
 
   create(data: Prisma.UserCreateInput) {
     return this.prisma.user.create({ data });
+  }
+
+  delete(id: number) {
+    return this.prisma.user.delete({ where: { id } });
   }
 }

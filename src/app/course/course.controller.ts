@@ -1,6 +1,8 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { Course, Prisma } from '@prisma/client';
 import { CourseService } from './course.service';
+import { ApiBody } from '@nestjs/swagger';
+import { CreateCourseDto } from './dto/course.dto';
 
 @Controller('course')
 export class CourseController {
@@ -16,6 +18,7 @@ export class CourseController {
     return this.courseService.findAll();
   }
 
+  @ApiBody({ type: CreateCourseDto, required: true })
   @Post()
   create(@Body() body: Prisma.CourseCreateInput) {
     return this.courseService.create(body);
